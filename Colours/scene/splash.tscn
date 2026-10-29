@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://resource/gdnative/gdexample.gdns" type="Script" id=2]
+[ext_resource path="res://assets/font/NotoSans-Medium.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resource/anim/SplashScreen.tres" type="Animation" id=4]
+[ext_resource path="res://assets/splash/splash_g5_placeholder.png" type="Texture" id=5]
+[ext_resource path="res://assets/sfx/ps4menu.mp3" type="AudioStream" id=6]
+[ext_resource path="res://resource/gdnative/SplashScreen.gdns" type="Script" id=7]
+
+[sub_resource type="GradientTexture2D" id=1]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SplashScreen/Splash1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 683, 384 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SplashScreen/Splash1Text:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 575.5, 401 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SplashScreen/Splash1Text:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Theme" id=3]
+
+[node name="SplashScene" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="TestSprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 683, 384 )
+scale = Vector2( 21.3438, 12 )
+z_index = -1
+z_as_relative = false
+texture = SubResource( 1 )
+
+[node name="SplashScreen" type="AnimationPlayer" parent="."]
+autoplay = "SplashScreen"
+anims/RESET = SubResource( 2 )
+anims/SplashScreen = ExtResource( 4 )
+
+[node name="SplashSFX" type="AudioStreamPlayer2D" parent="SplashScreen"]
+stream = ExtResource( 6 )
+
+[node name="Logo" type="Sprite" parent="SplashScreen"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 683, 384 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 5 )
+
+[node name="Splash1Text" type="Label" parent="SplashScreen"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 575.5
+margin_top = 401.0
+margin_right = 790.5
+margin_bottom = 443.0
+theme = SubResource( 3 )
+custom_fonts/font = ExtResource( 3 )
+text = "Built on Godot"
+align = 1
+valign = 1
+
+[node name="Splash1" type="Sprite" parent="SplashScreen"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 683, 384 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+
+[connection signal="animation_finished" from="SplashScreen" to="." method="_main_menu_change"]

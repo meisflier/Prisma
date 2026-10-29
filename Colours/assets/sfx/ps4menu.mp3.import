@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ps4menu.mp3-1abbd9cffac1a13de8ad6e9c832c89d8.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/ps4menu.mp3"
+dest_files=[ "res://.import/ps4menu.mp3-1abbd9cffac1a13de8ad6e9c832c89d8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
