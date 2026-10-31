@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/itembox.mp3-6d8f11a34d4c108ce08652244e6044a0.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/itembox.mp3"
+dest_files=[ "res://.import/itembox.mp3-6d8f11a34d4c108ce08652244e6044a0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

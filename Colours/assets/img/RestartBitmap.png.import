@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/RestartBitmap.png-f85f01e81b54ff611d16bcb4bba6c8c2.res"
+
+[deps]
+
+source_file="res://assets/img/RestartBitmap.png"
+dest_files=[ "res://.import/RestartBitmap.png-f85f01e81b54ff611d16bcb4bba6c8c2.res" ]
+
+[params]
+
+create_from=0
+threshold=0.5

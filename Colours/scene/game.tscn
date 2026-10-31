@@ -1,8 +1,322 @@
-[gd_scene format=2]
+[gd_scene load_steps=34 format=2]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource path="res://assets/img/PurpleTile.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/P1Tiles.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/RedTile.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/BlueTile.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/YellowTile.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/OrangeTile.png" type="Texture" id=6]
+[ext_resource path="res://assets/img/GreenTile.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/P2Tiles.png" type="Texture" id=8]
+[ext_resource path="res://assets/img/LightRefractor.png" type="Texture" id=9]
+[ext_resource path="res://assets/img/BottomButtonBitmap.png" type="BitMap" id=10]
+[ext_resource path="res://assets/img/UpperButtonBitmap.png" type="BitMap" id=11]
+[ext_resource path="res://assets/sfx/switchclick.mp3" type="AudioStream" id=12]
+[ext_resource path="res://resource/gdnative/ClickPlay.gdns" type="Script" id=13]
+[ext_resource path="res://resource/gdnative/ColorGameLoop.gdns" type="Script" id=14]
+[ext_resource path="res://assets/font/NotoSans-Medium.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://assets/img/ColorChoice.png" type="Texture" id=16]
+[ext_resource path="res://assets/img/UpperGrayedTile.png" type="Texture" id=17]
+[ext_resource path="res://assets/img/BottomGrayedTile.png" type="Texture" id=18]
+[ext_resource path="res://resource/groups/P1Button.tres" type="ButtonGroup" id=19]
+[ext_resource path="res://resource/groups/P2Button.tres" type="ButtonGroup" id=20]
+[ext_resource path="res://assets/sfx/itembox.mp3" type="AudioStream" id=21]
+[ext_resource path="res://resource/anim/Choice6.tres" type="Animation" id=22]
+[ext_resource path="res://resource/anim/Choice4.tres" type="Animation" id=23]
+[ext_resource path="res://resource/anim/Choice5.tres" type="Animation" id=24]
+[ext_resource path="res://resource/anim/Choice3.tres" type="Animation" id=25]
+[ext_resource path="res://resource/anim/Choice1.tres" type="Animation" id=26]
+[ext_resource path="res://resource/anim/Choice2.tres" type="Animation" id=27]
+[ext_resource path="res://assets/img/Restart.png" type="Texture" id=28]
+[ext_resource path="res://assets/img/RestartBitmap.png" type="BitMap" id=29]
+[ext_resource path="res://assets/img/Exit.png" type="Texture" id=30]
+[ext_resource path="res://assets/img/ExitBitmap.png" type="BitMap" id=31]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 15 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "RedP1"
+
+[node name="GameNode" type="Node2D"]
+script = ExtResource( 14 )
+__meta__ = {
+"_editor_description_": "Literally does nothing but let the ClickSFX node be connectible"
+}
+
+[node name="ClickSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 42, 444 )
+scale = Vector2( 0.5, 0.5 )
+stream = ExtResource( 12 )
+volume_db = 13.207
+script = ExtResource( 13 )
+
+[node name="BG" type="ColorRect" parent="."]
 margin_right = 1364.0
 margin_bottom = 768.0
 color = Color( 0.490196, 0.686275, 0.737255, 1 )
+
+[node name="P1UI" type="Control" parent="."]
+margin_left = 13.0
+margin_top = 346.0
+margin_right = 671.0
+margin_bottom = 777.0
+
+[node name="ChosenColorP1" type="Sprite" parent="P1UI"]
+visible = false
+position = Vector2( 172, -141 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="P1ChoiceUI" type="Sprite" parent="P1UI"]
+position = Vector2( 316, 223 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="P1Red" type="TextureButton" parent="P1UI" groups=["P1Buttons"]]
+margin_left = 29.0
+margin_top = 98.0
+margin_right = 319.0
+margin_bottom = 651.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 3 )
+texture_disabled = ExtResource( 17 )
+texture_click_mask = ExtResource( 11 )
+
+[node name="P1Orang" type="TextureButton" parent="P1UI" groups=["P1Buttons"]]
+margin_left = 115.0
+margin_top = 70.0
+margin_right = 405.0
+margin_bottom = 623.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 0
+enabled_focus_mode = 0
+group = ExtResource( 19 )
+texture_normal = ExtResource( 6 )
+texture_disabled = ExtResource( 18 )
+texture_click_mask = ExtResource( 10 )
+
+[node name="P1Yellow" type="TextureButton" parent="P1UI" groups=["P1Buttons"]]
+margin_left = 203.0
+margin_top = 100.0
+margin_right = 493.0
+margin_bottom = 653.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 0
+enabled_focus_mode = 0
+group = ExtResource( 19 )
+texture_normal = ExtResource( 5 )
+texture_disabled = ExtResource( 17 )
+texture_click_mask = ExtResource( 11 )
+
+[node name="P1Green" type="TextureButton" parent="P1UI" groups=["P1Buttons"]]
+margin_left = 290.0
+margin_top = 72.0
+margin_right = 580.0
+margin_bottom = 625.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 0
+enabled_focus_mode = 0
+group = ExtResource( 19 )
+texture_normal = ExtResource( 7 )
+texture_disabled = ExtResource( 18 )
+texture_click_mask = ExtResource( 10 )
+
+[node name="P1Blue" type="TextureButton" parent="P1UI" groups=["P1Buttons"]]
+margin_left = 377.0
+margin_top = 101.0
+margin_right = 667.0
+margin_bottom = 654.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 0
+enabled_focus_mode = 0
+group = ExtResource( 19 )
+texture_normal = ExtResource( 4 )
+texture_disabled = ExtResource( 17 )
+texture_click_mask = ExtResource( 11 )
+
+[node name="P1Purple" type="TextureButton" parent="P1UI" groups=["P1Buttons"]]
+margin_left = 464.0
+margin_top = 72.0
+margin_right = 754.0
+margin_bottom = 625.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 0
+enabled_focus_mode = 0
+group = ExtResource( 19 )
+texture_normal = ExtResource( 1 )
+texture_disabled = ExtResource( 18 )
+texture_click_mask = ExtResource( 10 )
+
+[node name="P2UI2" type="Control" parent="."]
+margin_left = 718.0
+margin_top = 346.0
+margin_right = 1376.0
+margin_bottom = 777.0
+
+[node name="ChosenColorP2" type="Sprite" parent="P2UI2"]
+visible = false
+position = Vector2( 462, -141 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="P2ChoiceUI" type="Sprite" parent="P2UI2"]
+position = Vector2( 316, 223 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="P2Red" type="TextureButton" parent="P2UI2" groups=["P2Buttons"]]
+margin_left = 465.0
+margin_top = 100.0
+margin_right = 755.0
+margin_bottom = 653.0
+rect_scale = Vector2( 0.5, 0.5 )
+disabled = true
+enabled_focus_mode = 0
+group = ExtResource( 20 )
+texture_normal = ExtResource( 3 )
+texture_disabled = ExtResource( 17 )
+texture_click_mask = ExtResource( 11 )
+
+[node name="P2Orang" type="TextureButton" parent="P2UI2" groups=["P2Buttons"]]
+margin_left = 376.0
+margin_top = 70.0
+margin_right = 666.0
+margin_bottom = 623.0
+rect_scale = Vector2( 0.5, 0.5 )
+disabled = true
+enabled_focus_mode = 0
+group = ExtResource( 20 )
+texture_normal = ExtResource( 6 )
+texture_disabled = ExtResource( 18 )
+texture_click_mask = ExtResource( 10 )
+
+[node name="P2Yellow" type="TextureButton" parent="P2UI2" groups=["P2Buttons"]]
+margin_left = 291.0
+margin_top = 99.0
+margin_right = 581.0
+margin_bottom = 652.0
+rect_scale = Vector2( 0.5, 0.5 )
+disabled = true
+enabled_focus_mode = 0
+group = ExtResource( 20 )
+texture_normal = ExtResource( 5 )
+texture_disabled = ExtResource( 17 )
+texture_click_mask = ExtResource( 11 )
+
+[node name="P2Green" type="TextureButton" parent="P2UI2" groups=["P2Buttons"]]
+margin_left = 202.0
+margin_top = 70.0
+margin_right = 492.0
+margin_bottom = 623.0
+rect_scale = Vector2( 0.5, 0.5 )
+disabled = true
+enabled_focus_mode = 0
+group = ExtResource( 20 )
+texture_normal = ExtResource( 7 )
+texture_disabled = ExtResource( 18 )
+texture_click_mask = ExtResource( 10 )
+
+[node name="P2Blue" type="TextureButton" parent="P2UI2" groups=["P2Buttons"]]
+margin_left = 116.0
+margin_top = 99.0
+margin_right = 406.0
+margin_bottom = 652.0
+rect_scale = Vector2( 0.5, 0.5 )
+disabled = true
+enabled_focus_mode = 0
+group = ExtResource( 20 )
+texture_normal = ExtResource( 4 )
+texture_disabled = ExtResource( 17 )
+texture_click_mask = ExtResource( 11 )
+
+[node name="P2Purple" type="TextureButton" parent="P2UI2" groups=["P2Buttons"]]
+margin_left = 28.0
+margin_top = 70.0
+margin_right = 318.0
+margin_bottom = 623.0
+rect_scale = Vector2( 0.5, 0.5 )
+disabled = true
+enabled_focus_mode = 0
+group = ExtResource( 20 )
+texture_normal = ExtResource( 1 )
+texture_disabled = ExtResource( 18 )
+texture_click_mask = ExtResource( 10 )
+
+[node name="CalculatedColor" type="Sprite" parent="."]
+modulate = Color( 0.572549, 0.572549, 0.572549, 1 )
+position = Vector2( 688, 192 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 16 )
+
+[node name="PhaseIndicator" type="Label" parent="." groups=["PhaseIndicator"]]
+margin_left = 571.0
+margin_top = 168.0
+margin_right = 805.0
+margin_bottom = 210.0
+custom_fonts/font = SubResource( 3 )
+text = "1st Player Phase"
+align = 1
+
+[node name="Chromarizer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CrystalIndicator")
+anims/Choice1 = ExtResource( 26 )
+anims/Choice2 = ExtResource( 27 )
+anims/Choice3 = ExtResource( 25 )
+anims/Choice4 = ExtResource( 23 )
+anims/Choice5 = ExtResource( 24 )
+anims/Choice6 = ExtResource( 22 )
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="Chromarizer"]
+position = Vector2( 690, 190 )
+scale = Vector2( 0.5, 0.5 )
+stream = ExtResource( 21 )
+volume_db = 8.157
+
+[node name="CrystalIndicator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../PhaseIndicator")
+anims/RedP1 = SubResource( 4 )
+
+[node name="Runback" type="TextureButton" parent="." groups=["SaltyRunback"]]
+visible = false
+margin_left = 604.0
+margin_top = 638.0
+margin_right = 919.0
+margin_bottom = 809.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 0
+disabled = true
+enabled_focus_mode = 0
+texture_normal = ExtResource( 28 )
+texture_click_mask = ExtResource( 29 )
+
+[node name="Quit" type="TextureButton" parent="."]
+margin_left = -12.0
+margin_top = -22.0
+margin_right = 270.0
+margin_bottom = 259.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 30 )
+texture_click_mask = ExtResource( 31 )
+script = ExtResource( 14 )
+
+[connection signal="pressed" from="P1UI/P1Red" to="." method="_take_color" binds= [ 1 ]]
+[connection signal="pressed" from="P1UI/P1Orang" to="." method="_take_color" binds= [ 2 ]]
+[connection signal="pressed" from="P1UI/P1Yellow" to="." method="_take_color" binds= [ 3 ]]
+[connection signal="pressed" from="P1UI/P1Green" to="." method="_take_color" binds= [ 4 ]]
+[connection signal="pressed" from="P1UI/P1Blue" to="." method="_take_color" binds= [ 5 ]]
+[connection signal="pressed" from="P1UI/P1Purple" to="." method="_take_color" binds= [ 6 ]]
+[connection signal="pressed" from="P2UI2/P2Red" to="." method="_take_color" binds= [ 1 ]]
+[connection signal="pressed" from="P2UI2/P2Orang" to="." method="_take_color" binds= [ 2 ]]
+[connection signal="pressed" from="P2UI2/P2Yellow" to="." method="_take_color" binds= [ 3 ]]
+[connection signal="pressed" from="P2UI2/P2Green" to="." method="_take_color" binds= [ 4 ]]
+[connection signal="pressed" from="P2UI2/P2Blue" to="." method="_take_color" binds= [ 5 ]]
+[connection signal="pressed" from="P2UI2/P2Purple" to="." method="_take_color" binds= [ 6 ]]
+[connection signal="animation_finished" from="Chromarizer" to="." method="_on_animation_finished"]
+[connection signal="pressed" from="Runback" to="." method="_salty_runback"]
+[connection signal="button_up" from="Quit" to="." method="_return_to_menu"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/BottomButtonBitmap.png-7d40e2ea478f1b71bb7469d8305281ce.res"
+
+[deps]
+
+source_file="res://assets/img/BottomButtonBitmap.png"
+dest_files=[ "res://.import/BottomButtonBitmap.png-7d40e2ea478f1b71bb7469d8305281ce.res" ]
+
+[params]
+
+create_from=0
+threshold=0.5
